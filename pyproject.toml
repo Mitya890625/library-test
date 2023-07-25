@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "library-test"
+version = "0.1.0"
+description = ""
+authors = ["MityaZhdan <dmitriyzhdan23@gmail.com>"]
+readme = "README.md"
+packages = [{include = "library_test"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = {extras = ["all"], version = "^0.100.0"}
+sqlalchemy = "^2.0.19"
+black = "^23.7.0"
+flake8 = "^6.0.0"
+mypy = "^1.4.1"
+pytest = "^7.4.0"
+httpx = "^0.24.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

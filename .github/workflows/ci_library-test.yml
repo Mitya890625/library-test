@@ -1,0 +1,18 @@
+name: Linting and Testing
+on:
+  pull_request:
+  push:
+env:
+  DATABASE_URL: sqlite://./db.sqlite3
+  SECRET_KEY: ${{secrets.SECRET_KEY}}
+  MODE_DEBUG: ${{secrets.MODE_DEBUG}}
+jobs:
+ lint:
+   runs-on: ubuntu-latest
+   steps:
+     - uses: actions/checkout@v3
+     - uses: actions/setup-python@v4
+       with:
+          python-version: "3.11"
+     - uses: Gr1N/setup-poetry@v8
+     - run: poetry --version

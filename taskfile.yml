@@ -1,0 +1,16 @@
+version: '3'
+
+tasks:
+  runserver:
+    dir: library_test
+    cmds:
+      - poetry run uvicorn main:app --reload
+    silent: true
+  code-lint:
+    cmds:
+      - poetry run mypy .
+      - poetry run black .
+      - poetry run flake8 .
+  runtest:
+    cmds:
+      - poetry run pytest

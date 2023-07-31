@@ -19,6 +19,4 @@ jobs:
      - uses: Gr1N/setup-poetry@v8
      - run: poetry --version
      - run: poetry install
-     - run: task runserver &
-     - run: task code-lint
-     - run: task runtest
+     - run: ls

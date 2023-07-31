@@ -11,8 +11,13 @@ jobs:
    runs-on: ubuntu-latest
    steps:
      - uses: actions/checkout@v3
+     - uses: wizhi/setup-task@v1
      - uses: actions/setup-python@v4
        with:
           python-version: "3.11"
      - uses: Gr1N/setup-poetry@v8
      - run: poetry --version
+     - run: poetry install
+     - run: task runserver &
+     - run: task code-lint
+     - run: task runtest

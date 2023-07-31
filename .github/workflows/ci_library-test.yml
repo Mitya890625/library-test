@@ -19,4 +19,8 @@ jobs:
      - uses: Gr1N/setup-poetry@v8
      - run: poetry --version
      - run: poetry install
-     - run: ls
+     - run: poetry run uvicorn main:app --reload &
+     - run: poetry run mypy .
+     - run: poetry run black .
+     - run: poetry run flake8 .
+     - run: poetry run pytest

@@ -3,8 +3,7 @@ on:
   pull_request:
   push:
 env:
-  DATABASE_URL: sqlite://library_test/sql_l.db
-  ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+  DATABASE_URL: sqlite:///./sql_l.db
 jobs:
  lint:
    runs-on: ubuntu-latest

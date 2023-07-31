@@ -1,4 +1,4 @@
-name: Linting and Testing
+name: CI
 on:
   pull_request:
   push:
@@ -9,11 +9,10 @@ jobs:
    runs-on: ubuntu-latest
    steps:
      - uses: actions/checkout@v3
+     - uses: Gr1N/setup-poetry@v8
      - uses: actions/setup-python@v4
        with:
-          python-version: "3.11"
-     - uses: Gr1N/setup-poetry@v8
-     - run: poetry --version
+         python-version: "3.11"
      - run: poetry install
      - run: poetry run uvicorn main:app --reload &
      - run: poetry run mypy .

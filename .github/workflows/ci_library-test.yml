@@ -3,7 +3,7 @@ on:
   pull_request:
   push:
 env:
-  DATABASE_URL: sqlite://library_test/db.sqlite3
+  DATABASE_URL: sqlite://library_test/sql_l.db
   ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 jobs:
  lint:

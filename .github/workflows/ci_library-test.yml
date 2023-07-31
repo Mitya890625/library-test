@@ -3,16 +3,13 @@ on:
   pull_request:
   push:
 env:
-  DATABASE_URL: sqlite://./db.sqlite3
-  SECRET_KEY: ${{secrets.SECRET_KEY}}
-  MODE_DEBUG: ${{secrets.MODE_DEBUG}}
+  DATABASE_URL: sqlite://library_test/db.sqlite3
   ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 jobs:
  lint:
    runs-on: ubuntu-latest
    steps:
      - uses: actions/checkout@v3
-     - uses: wizhi/setup-task@v1
      - uses: actions/setup-python@v4
        with:
           python-version: "3.11"

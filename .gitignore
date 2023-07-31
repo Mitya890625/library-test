@@ -1,5 +1,5 @@
 .venv
 __pycache__
-many-to-many-tutorial
 .pytest_cache
 .mypy_cache
+.env

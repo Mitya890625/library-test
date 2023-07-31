@@ -2,12 +2,15 @@ import models  # type: ignore
 from schema import BookSchema, AuthorSchema  # type: ignore
 from fastapi import FastAPI, status, HTTPException, Depends
 from sqlalchemy.orm import Session, joinedload
-from database import engine, SessionLocal, get_db  # type: ignore
+from database import engine, get_db  # type: ignore
 
 models.Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
-@app.post("/books", response_model=BookSchema, status_code=status.HTTP_201_CREATED)
+
+@app.post("/books",
+          response_model=BookSchema,
+          status_code=status.HTTP_201_CREATED)
 def create_book(book: BookSchema, db: Session = Depends(get_db)):
     new_book = models.Book(**book.dict())
     db.add(new_book)
@@ -16,7 +19,9 @@ def create_book(book: BookSchema, db: Session = Depends(get_db)):
     return new_book
 
 
-@app.post("/authors", response_model=AuthorSchema, status_code=status.HTTP_201_CREATED)
+@app.post("/authors",
+          response_model=AuthorSchema,
+          status_code=status.HTTP_201_CREATED)
 def create_author(author: AuthorSchema, db: Session = Depends(get_db)):
     new_author = models.Author(**author.dict())
     db.add(new_author)
@@ -26,12 +31,18 @@ def create_author(author: AuthorSchema, db: Session = Depends(get_db)):
 
 
 @app.post("/books/{book_id}/authors/{author_id}/")
-def add_author_to_book(book_id: int, author_id: int, db: Session = Depends(get_db)):
-    book = db.query(models.Book).filter(models.Book.id == book_id).first()
+def add_author_to_book(book_id: int,
+                       author_id: int,
+                       db: Session = Depends(get_db)):
+    book = db.query(models.Book).\
+        filter(models.Book.id == book_id).\
+        first()
     if not book:
         raise HTTPException(status_code=404, detail="Book not found")
 
-    author = db.query(models.Author).filter(models.Author.id == author_id).first()
+    author = db.query(models.Author).\
+        filter(models.Author.id == author_id).\
+        first()
     if not author:
         raise HTTPException(status_code=404, detail="Author not found")
 
@@ -41,12 +52,18 @@ def add_author_to_book(book_id: int, author_id: int, db: Session = Depends(get_d
 
 
 @app.post("/authors/{author_id}/books/{book_id}/")
-def add_book_to_author(author_id: int, book_id: int, db: Session = Depends(get_db)):
-    author = db.query(models.Author).filter(models.Author.id == author_id).first()
+def add_book_to_author(author_id: int,
+                       book_id: int,
+                       db: Session = Depends(get_db)):
+    author = db.query(models.Author).\
+        filter(models.Author.id == author_id).\
+        first()
     if not author:
         raise HTTPException(status_code=404, detail="Author not found")
 
-    book = db.query(models.Book).filter(models.Book.id == book_id).first()
+    book = db.query(models.Book).\
+        filter(models.Book.id == book_id).\
+        first()
     if not book:
         raise HTTPException(status_code=404, detail="Book not found")
 
@@ -57,13 +74,17 @@ def add_book_to_author(author_id: int, book_id: int, db: Session = Depends(get_d
 
 @app.get("/books")
 def get_books(db: Session = Depends(get_db)):
-    books = db.query(models.Book).options(joinedload(models.Book.authors)).all()
+    books = db.query(models.Book).\
+        options(joinedload(models.Book.authors)).\
+        all()
     return books
 
 
 @app.get("/authors")
 def get_authors(db: Session = Depends(get_db)):
-    authors = db.query(models.Author).options(joinedload(models.Author.books)).all()
+    authors = db.query(models.Author).\
+        options(joinedload(models.Author.books)).\
+        all()
     return authors
 
 

@@ -16,7 +16,10 @@ class Book(Base):
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     title = Column(String, nullable=False)
     year = Column(String, nullable=False)
-    authors = relationship("Author", secondary="book_authors", back_populates="books", cascade="all, delete")
+    authors = relationship("Author",
+                           secondary="book_authors",
+                           back_populates="books",
+                           cascade="all, delete")
 
 
 
@@ -26,4 +29,4 @@ class Author(Base):
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     name = Column(String, nullable=False)
     country = Column(String, nullable=False)
-    books = relationship("Book", secondary="book_authors", back_populates="authors")
+    books = relationship("Book", secondary="book_authors", back_populates="authors")  # noqa 501

@@ -2,7 +2,7 @@ import httpx
 import json
 
 
-BASE_URL = "http://127.0.0.1:8000"
+BASE_URL = "http://127.0.0.1:60472"
 
 
 def test_read_all_empty():

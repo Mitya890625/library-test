@@ -3,7 +3,7 @@ on:
   pull_request:
   push:
 env:
-  DATABASE_URL: sqlite:///./sql_l.db
+  DATABASE_URL: sqlite://./sql_l.db
 jobs:
  lint-test:
    runs-on: ubuntu-latest

@@ -5,17 +5,31 @@ on:
 env:
   DATABASE_URL: sqlite:///./sql_l.db
 jobs:
- lint:
+ lint_test:
+   name: Set up OS
    runs-on: ubuntu-latest
    steps:
-     - uses: actions/checkout@v3
-     - uses: Gr1N/setup-poetry@v8
-     - uses: actions/setup-python@v4
+     - name: pull code from repo
+       uses: actions/checkout@v3
+       
+     - name: install poetry package manager
+       uses: Gr1N/setup-poetry@v8
+     
+     - name: set up python
+       uses: actions/setup-python@v4
        with:
          python-version: "3.11"
+         
+     - name: install dependencies
      - run: poetry install
+     
+     - name: run type checking and code formatter
      - run: poetry run mypy .
      - run: poetry run black .
+     
+     - name: run server
      - run: poetry run uvicorn main:app &
        working-directory: library_test/
+       
+     - name: run tests
      - run: poetry run pytest

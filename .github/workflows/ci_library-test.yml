@@ -21,15 +21,17 @@ jobs:
          python-version: "3.11"
          
      - name: install dependencies
-     - run: poetry install
+       run: poetry install
      
-     - name: run type checking and code formatter
-     - run: poetry run mypy .
-     - run: poetry run black .
+     - name: run type checking
+       run: poetry run mypy .
+       
+     - name: run code formatter
+       run: poetry run black .
      
      - name: run server
-     - run: poetry run uvicorn main:app &
+       run: poetry run uvicorn main:app &
        working-directory: library_test/
        
      - name: run tests
-     - run: poetry run pytest
+       run: poetry run pytest

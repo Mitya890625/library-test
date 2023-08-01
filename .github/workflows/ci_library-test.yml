@@ -17,5 +17,5 @@ jobs:
      - run: poetry run mypy .
      - run: poetry run black .
      - run: poetry run uvicorn main:app &
-     - run: cd ..
+       working-directory: library_list/
      - run: poetry run pytest

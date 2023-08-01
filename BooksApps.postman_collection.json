@@ -1,0 +1,269 @@
+{
+	"info": {
+		"_postman_id": "421de66b-3622-42a3-9226-3b30151f4b59",
+		"name": "BooksApps",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26809614",
+		"_collection_link": "https://red-desert-267464.postman.co/workspace/m-pt1-63-23~6d60621f-c058-4d95-82c9-190d0283077e/collection/26809614-421de66b-3622-42a3-9226-3b30151f4b59?action=share&creator=26809614&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "create_book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"The lord of the rings\",\r\n    \"year\": \"1950\",\r\n    \"authors\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/books",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "link_book_to_author",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Old man and the sea\",\r\n    \"author\": \"E. Haminguey\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/books/1/authors/2",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"books",
+						"1",
+						"authors",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "link_author_to_book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Old man and the sea\",\r\n    \"author\": \"E. Haminguey\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/authors/1/books/2",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"authors",
+						"1",
+						"books",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create_author",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Walt Whitman\",\r\n    \"country\": \"England\",\r\n    \"books\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/authors",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"authors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_all_books",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Old man and the sea\",\r\n    \"author\": \"E. Haminguey\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/books",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_all_authors",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Old man and the sea\",\r\n    \"author\": \"E. Haminguey\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/authors",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"authors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_one_book",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Old man and the sea\",\r\n    \"author\": \"E. Haminguey\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/books/1",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"books",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_one_author",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Old man and the sea\",\r\n    \"author\": \"E. Haminguey\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/authors/2",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"authors",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete_all",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Old man and the sea\",\r\n    \"author\": \"E. Haminguey\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/authors/2",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"authors",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

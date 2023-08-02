@@ -6,7 +6,7 @@ env:
   DATABASE_URL: sqlite:///./sql_l.db
 jobs:
  lint_test:
-   name: Set up OS
+   name: Linting and testing
    runs-on: ubuntu-latest
    steps:
      - name: pull code from repo
